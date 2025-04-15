@@ -12,7 +12,7 @@
   settings.social_snapchat_link == blank and 
   settings.social_tumblr_link == blank and 
   settings.social_vimeo_link == blank and
-  setting.social_linkedin_link == blank 
+  settings .social_linkedin_link == blank 
     assign social_icons = false
   endif
   if section.settings.enable_country_selector or section.settings.enable_language_selector
@@ -28,18 +28,22 @@
 {% endif %}
 
 <div
-  class="utility-bar color-{{ section.settings.color_scheme: "light" }} gradient
+  class="utility-bar color-{{ section.settings.color_scheme }} gradient
 
   {% if section.settings.show_new_badge %}
-    <span class= 'utility-bar_badge'> NEW</span>
+    <span class= 'utility-bar_badge'> NEW </span>
   {% endif %}
     
   {% if section.settings.show_line_separator and section.blocks.size > 0 %} 
-  utility-bar--bottom-border
-  
+    {% if request.device_type == 'mobile' %}  
+      utility-bar--no-border
+    {% else %}
+      utility-bar--bottom-border
+    {% endif %}
   {% elsif section.settings.show_line_separator and section.settings.show_social and social_icons%} 
     utility-bar--bottom-border-social-only
   {% endif %}
+    
   {% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization
   {% endif %}">
   
