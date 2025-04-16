@@ -47,7 +47,8 @@
   {% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization
   {% endif %}">
   
-  <div class="page-width utility-bar__grid{% if announcement_bar and language_country_selector or section.settings.show_social and social_icons %}
+  <div class="page-width utility-bar__grid
+    {% if announcement_bar and language_country_selector or section.settings.show_social and social_icons %}
       utility-bar__grid--3-col
     {% elsif language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--2-col{% endif %}">
     {%- if section.settings.show_social and social_icons -%}
@@ -59,7 +60,7 @@
         role="region"
         aria-label="{{ 'sections.header.announcement' | t }}"
         {{ section.blocks.first.shopify_attributes }}
-      >
+        >
         {%- if section.blocks.first.settings.text != blank -%}
           {%- if section.blocks.first.settings.link != blank -%}
             <a
@@ -221,12 +222,12 @@
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
-      "default": "scheme-4"
+      "default": "scheme-3"
     },  
     {
       "type": "checkbox",
       "id": "show_line_separator",
-      "default": true,
+      "default": false,
       "label": "t:sections.header.settings.show_line_separator.label"
     },
     {
