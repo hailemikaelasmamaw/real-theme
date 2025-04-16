@@ -28,6 +28,7 @@
 {% endif %}
 
 <div
+
   class="utility-bar color-{{ section.settings.color_scheme }} gradient
 
   {% if section.settings.show_new_badge %}
@@ -60,7 +61,7 @@
         role="region"
         aria-label="{{ 'sections.header.announcement' | t }}"
         {{ section.blocks.first.shopify_attributes }}
-        >
+      >
         {%- if section.blocks.first.settings.text != blank -%}
           {%- if section.blocks.first.settings.link != blank -%}
             <a
@@ -79,6 +80,14 @@
           {%- endif -%}
         {%- endif -%}
       </div>
+    
+      <!-- Custom Message -->
+      {%- if section.settings.custom_message != blank -%}
+        <div class="announcement-bar__custom-message center h5">
+          {{ section.settings.custom_message }}
+        </div>
+      {%- endif -%}
+    
     {%- elsif section.blocks.size > 1 -%}
       <slideshow-component
         class="announcement-bar"
@@ -258,6 +267,12 @@
       "default": false,
       "label": "t:sections.announcement-bar.settings.enable_language_selector.label",
       "info": "t:sections.announcement-bar.settings.enable_language_selector.info"
+    },
+    {
+      "type": "text",
+      "id": "custom_message",
+      "label": "Custom message",
+      "default": "Welcome to our store!"
     }
   ],
   "blocks": [
