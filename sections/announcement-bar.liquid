@@ -73,14 +73,14 @@
         {%- endif -%}
         <div class="custom-message-wrapper">
           {% if section.settings.custom_message != blank %}
-            <p class="custom-message h5">{{ section.settings.custom_message }}</p>
+            <script src="{{ 'announcement-utils.js' | assets_url | }}>
           {% endif %}
         </div>
       </div>
     
     {%- elsif section.blocks.size > 1 -%}
     <slideshow-component
-      class="announcement-bar"
+      class= "announcement-bar"
       role="region"
       aria-roledescription="{{ 'sections.announcements.carousel' | t }}"
       aria-label="{{ 'sections.announcements.announcement_bar' | t }}">
