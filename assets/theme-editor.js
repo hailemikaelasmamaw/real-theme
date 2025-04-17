@@ -58,8 +58,40 @@ document.querySelectorAll('form[action^="/cart/add"]').forEach((form) => {
     const toast = document.createElement('div');
     toast.textContent = '🛒 Product Added!';
     toast.style.position = 'fixed';
-    toast.style.bottom = '20px';
-    toast.style.right = '20px';
+    toast.style.bottom = '0px';
+    toast.style.right = '0px';
+    toast.style.padding = '12px 18px';
+    toast.style.background = '#000';
+    toast.style.color = '#fff';
+    toast.style.borderRadius = '6px';
+    toast.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+    toast.style.zIndex = '1000';
+
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+      toast.remove();
+    }, 3000); // remove after 3 seconds
+
+    // ✅ Submit the real form
+    form.submit();
+  });
+});
+
+
+document.querySelectorAll('form[action^="/cart/remove"]').forEach((form) => {
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // ✅ Console log for dev
+    console.log('Add to cart clicked!');
+
+    // ✅ Show temporary toast
+    const toast = document.createElement('div');
+    toast.textContent = '🛒 Product Removed!';
+    toast.style.position = 'fixed';
+    toast.style.bottom = '0px';
+    toast.style.right = '0px';
     toast.style.padding = '12px 18px';
     toast.style.background = '#000';
     toast.style.color = '#fff';
