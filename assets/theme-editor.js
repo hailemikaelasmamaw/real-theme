@@ -52,7 +52,7 @@ document.querySelectorAll('form[action^="/cart/add"]').forEach((form) => {
     e.preventDefault();
 
     // ✅ Console log for dev
-    console.log('Add to cart clicked!');
+    console.log('Remove from cart clicked!');
 
     // ✅ Show temporary toast
     const toast = document.createElement('div');
@@ -88,7 +88,7 @@ document.querySelectorAll('form[action^="/cart/remove"]').forEach((form) => {
 
     // ✅ Show temporary toast
     const toast = document.createElement('div');
-    toast.textContent = '🛒 Product Removed!';
+    toast.textContent = '🚫 Product Removed';
     toast.style.position = 'fixed';
     toast.style.bottom = '0px';
     toast.style.right = '0px';
