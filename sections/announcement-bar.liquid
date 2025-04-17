@@ -73,7 +73,7 @@
         {%- endif -%}
         <div class="custom-message-wrapper">
           {% if section.settings.custom_message != blank %}
-            <script src="{{ 'announcement-utils.js' | assets_url | }}>
+            <script src="{{ 'announcement-utils.js' | asset_url }}" defer="defer" ></script>
           {% endif %}
         </div>
       </div>
