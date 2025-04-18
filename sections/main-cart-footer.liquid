@@ -171,6 +171,29 @@
   ],
   "blocks": [
     {
+      "type": "custom_message",
+      "name": "Custom Message",
+      "settings": [
+        {
+          "type": "text",
+          "id": "message",
+          "label": "Message Text",
+          "default": "Secure checkout guaranteed."
+        }
+      ]
+    },
+    {
+      "type": "trust_badge",
+      "name": "Trust Badge",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "badge_image",
+          "label": "Trust Badge Image"
+        }
+      ]
+    },    
+    {
       "type": "subtotal",
       "name": "t:sections.main-cart-footer.blocks.subtotal.name",
       "limit": 1
@@ -180,6 +203,7 @@
       "name": "t:sections.main-cart-footer.blocks.buttons.name",
       "limit": 1
     },
+
     {
       "type": "@app"
     }

@@ -12,6 +12,7 @@
 {%- endif -%}
 
 
+
 <style>
   header-drawer {
     justify-self: start;
@@ -72,6 +73,7 @@
   }
 </style>
 
+
 {%- style -%}
   .header {
     padding: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px 3rem {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px 3rem;
@@ -113,6 +115,7 @@
     assign header_tag = 'sticky-header'
   endif
 %}
+
 
 <{{ header_tag }} {% if header_tag == 'sticky-header' %}data-sticky-type="{{ section.settings.sticky_header_type }}"{% endif %} class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
   {%- liquid
@@ -549,16 +552,19 @@
       "default": true,
       "label": "t:sections.header.settings.show_line_separator.label"
     },
+
     {
       "type": "header",
       "content": "t:sections.header.settings.header__1.content"
     },
+
     {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
     },
+
     {
       "type": "color_scheme",
       "id": "menu_color_scheme",
@@ -569,6 +575,7 @@
       "type": "header",
       "content": "t:sections.header.settings.header__utilities.content"
     },
+
     {
       "type": "checkbox",
       "id": "enable_country_selector",
@@ -576,6 +583,7 @@
       "label": "t:sections.header.settings.enable_country_selector.label",
       "info":"t:sections.header.settings.enable_country_selector.info"
     },
+
     {
       "type": "checkbox",
       "id": "enable_language_selector",
@@ -583,6 +591,7 @@
       "label": "t:sections.header.settings.enable_language_selector.label",
       "info":"t:sections.header.settings.enable_language_selector.info"
     },
+
     {
       "type": "checkbox",
       "id": "enable_customer_avatar",
@@ -590,10 +599,12 @@
       "label": "t:sections.header.settings.enable_customer_avatar.label",
       "info": "t:sections.header.settings.enable_customer_avatar.info"
     },
+
     {
       "type": "header",
       "content": "t:sections.all.spacing"
     },
+
     {
       "type": "range",
       "id": "margin_bottom",
@@ -604,6 +615,7 @@
       "label": "t:sections.header.settings.margin_bottom.label",
       "default": 0
     },
+    
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
