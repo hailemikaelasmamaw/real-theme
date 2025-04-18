@@ -40,6 +40,17 @@
       <div class="cart__blocks">
         {% for block in section.blocks %}
           {%- case block.type -%}
+          {% when 'custome_message' %}
+            <div class= "custom-cart-message text-sm text-gray-600 my-4">
+              {{ block.setting.message }}
+            </div>
+          {%  when 'trust_badge' %}
+            {% if block.badge_image != blank %}
+              <div class="trust-badge my-4">
+                <img src="{{ block.settings.badge_image | image_url }}" width = "300" height="300"  alt="Trust Badge" loading="lazy"/>
+              </div> 
+            {% endif %}
+
             {%- when '@app' -%}
               {% render block %}
             {%- when 'subtotal' -%}
@@ -170,43 +181,68 @@
     }
   ],
   "blocks": [
-    {
-      "type": "custom_message",
-      "name": "Custom Message",
-      "settings": [
-        {
-          "type": "text",
-          "id": "message",
-          "label": "Message Text",
-          "default": "Secure checkout guaranteed."
-        }
-      ]
-    },
-    {
-      "type": "trust_badge",
-      "name": "Trust Badge",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "badge_image",
-          "label": "Trust Badge Image"
-        }
-      ]
-    },    
-    {
-      "type": "subtotal",
-      "name": "t:sections.main-cart-footer.blocks.subtotal.name",
-      "limit": 1
-    },
-    {
-      "type": "buttons",
-      "name": "t:sections.main-cart-footer.blocks.buttons.name",
-      "limit": 1
-    },
+  {
+    "type": "subtotal",
+    "name": "t:sections.main-cart-footer.blocks.subtotal.name",
+    "limit": 1
+  },
+  {
+    "type": "buttons",
+    "name": "t:sections.main-cart-footer.blocks.buttons.name",
+    "limit": 1
+  },
+  {
+    "type": "custom_message",
+    "name": "Custom Message",
+    "settings": [
+      {
+        "type": "text",
+        "id": "message",
+        "label": "Message Text",
+        "default": "Secure checkout guaranteed."
+      }
+    ]
+  },
+  {
+    "type": "trust_badge",
+    "name": "Trust Badge",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "badge_image",
+        "label": "Trust Badge Image"
+      }
+    ]
+  },
+  {
+    "type": "@app"
+  }
+  {
+    "type": "shipping_banner",
+    "name": "Shipping Banner",
+    "settings": [
+      {
+        "type": "text",
+        "id": "text",
+        "label": "Banner Text",
+        "default": "🚚 Free shipping on orders over Br100.00!"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#f3f4f6"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#1f2937"
+      }
+    ]
+  }
+  
+]
 
-    {
-      "type": "@app"
-    }
-  ]
 }
 {% endschema %}
