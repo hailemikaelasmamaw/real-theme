@@ -10,6 +10,7 @@
 
 .blog__title {
   margin: 0;
+  font-weight: bold;
 }
 
 .blog__posts.articles-wrapper {

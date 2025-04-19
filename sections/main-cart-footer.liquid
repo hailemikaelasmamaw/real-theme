@@ -40,24 +40,36 @@
       <div class="cart__blocks">
         {% for block in section.blocks %}
           {%- case block.type -%}
-          {% when 'custom_message' %}
-            <div class= "custom-cart-message text-sm text-gray-600 my-4"
-            style="background-color: {{  block.setting.background_color }};
-              padding:12px 16px;
-              border-radius: 6px;">
-              {{ block.settings.message }}
-            </div>
-          {%  when 'trust_badge' %}
-            {% if block.settings.badge_image != blank %}
-              <div class="trust-badge my-4">
-                <img src="{{ block.settings.badge_image | image_url }}" width = "300" height="300"  alt="Trust Badge" loading="lazy"/>
-              </div> 
-            {% endif %}
-          {% when 'shipping_banner' %}
-            <div class="shipping-banner" style="background-color: {{ block.settings.background_color }}; color: {{ block.settings.text_color }}; padding: 12px 16px; border-radius: 6px; margin: 12px 0; text-align: center;">
-              {{ block.settings.text }}
-            </div>
-          
+            {% when 'custom_message' %}
+              <div
+                class="custom-cart-message text-sm text-gray-600 my-4"
+                style="
+                  background-color: {{  block.setting.background_color }};
+                  padding:12px 16px;
+                  border-radius: 6px;
+                "
+              >
+                {{ block.settings.message }}
+              </div>
+            {% when 'trust_badge' %}
+              {% if block.settings.badge_image != blank %}
+                <div class="trust-badge my-4">
+                  <img
+                    src="{{ block.settings.badge_image | image_url }}"
+                    width="300"
+                    height="300"
+                    alt="Trust Badge"
+                    loading="lazy"
+                  >
+                </div>
+              {% endif %}
+            {% when 'shipping_banner' %}
+              <div
+                class="shipping-banner"
+                style="background-color: {{ block.settings.background_color }}; color: {{ block.settings.text_color }}; padding: 12px 16px; border-radius: 6px; margin: 12px 0; text-align: center;"
+              >
+                {{ block.settings.text }}
+              </div>
 
             {%- when '@app' -%}
               {% render block %}
@@ -166,7 +178,7 @@
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
-    },    
+    },
     {
       "type": "range",
       "id": "padding_top",
@@ -189,78 +201,78 @@
     }
   ],
   "blocks": [
-  {
-    "type": "subtotal",
-    "name": "t:sections.main-cart-footer.blocks.subtotal.name",
-    "limit": 1
-  },
-  {
-    "type": "buttons",
-    "name": "t:sections.main-cart-footer.blocks.buttons.name",
-    "limit": 1
-  },
-  {
-    "type": "custom_message",
-    "name": "Custom Message",
-    "settings": [
-      {
-        "type": "text",
-        "id": "message",
-        "label": "Message Text",
-        "default": "Less Stock Order Now."
-      },
-      {
-        "type": "color",
-        "id": "background_color",
-        "label": "Background Color",
-        "default": "#f3f4f6"
-      },
-      {
-        "type": "color",
-        "id": "text_color",
-        "label": "Text Color",
-        "default": "#1f2937"
-      }
-    ]
-  },
-  {
-    "type": "trust_badge",
-    "name": "Trust Badge",
-    "settings": [
-      {
-        "type": "image_picker",
-        "id": "badge_image",
-        "label": "Trust Badge Image"
-      }
-    ]
-  },
-  {
-    "type": "shipping_banner",
-    "name": "Shipping Banner",
-    "settings": [
-      {
-        "type": "text",
-        "id": "text",
-        "label": "Banner Text",
-        "default": "🚚 Free shipping on orders over Br100.00!"
-      },
-      {
-        "type": "color",
-        "id": "background_color",
-        "label": "Background Color",
-        "default": "#f3f4f6"
-      },
-      {
-        "type": "color",
-        "id": "text_color",
-        "label": "Text Color",
-        "default": "#1f2937"
-      }
-    ]
-  },
-  {
-    "type": "@app"
-  }
-]
+    {
+      "type": "subtotal",
+      "name": "t:sections.main-cart-footer.blocks.subtotal.name",
+      "limit": 1
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.main-cart-footer.blocks.buttons.name",
+      "limit": 1
+    },
+    {
+      "type": "custom_message",
+      "name": "Custom Message",
+      "settings": [
+        {
+          "type": "text",
+          "id": "message",
+          "label": "Message Text",
+          "default": "Less Stock Order Now."
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#f3f4f6"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#1f2937"
+        }
+      ]
+    },
+    {
+      "type": "trust_badge",
+      "name": "Trust Badge",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "badge_image",
+          "label": "Trust Badge Image"
+        }
+      ]
+    },
+    {
+      "type": "shipping_banner",
+      "name": "Shipping Banner",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Banner Text",
+          "default": "🚚 Free shipping on orders over Br100.00!"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#f3f4f6"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#1f2937"
+        }
+      ]
+    },
+    {
+      "type": "@app"
+    }
+  ]
 }
 {% endschema %}

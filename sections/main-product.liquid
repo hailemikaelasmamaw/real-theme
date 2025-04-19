@@ -97,14 +97,16 @@
                   {{- block.settings.text -}}
                 </p>
               {%- when 'title' -%}
-                <div class="product__title" {{ block.shopify_attributes }}>
-                  <h1>{{ product.title | escape }}</h1>
-                  <a href="{{ product.url }}" class="product__title">
-                    <h2 class="h1">
+                <div class="product__title-wrapper" {{ block.shopify_attributes }}>
+                  <h1 class="product__title-main">{{ product.title | escape }}</h1>
+                  
+                  <a href="{{ product.url }}" class="product__title-link">
+                    <h2 class="product__title-secondary h1">
                       {{ product.title | escape }}
                     </h2>
                   </a>
                 </div>
+              
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
@@ -455,11 +457,11 @@
                     {{ block.settings.text | default: block.settings.page.title | escape }}
                   </button>
                 </modal-opener>
-              {%- when 'share' -%}
+              {% comment %} {%- when 'share' -%}
                 {% liquid
                   assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin
                   render 'share-button', block: block, share_link: share_url
-                %}
+                %} {% endcomment %}
 
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
@@ -553,8 +555,7 @@
                             role="list"
                             {% if number_of_slides > 1 %}
                               aria-label="{{ 'general.slider.name' | t }}"
-                            {% endif %}
-                          >
+                            {% endif %}>
                             {% assign skip_card_product_styles = false %}
                             {%- for i in (1..number_of_slides) -%}
                               <div
