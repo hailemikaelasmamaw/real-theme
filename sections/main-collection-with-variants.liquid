@@ -1,0 +1,22 @@
+<div class= "product-grid">
+    {% for product in collection.products %}
+        {% for variant in product.variants %}
+            <div class = "product-card">
+                <a href="{{ product.url }}? varient={{ varient.id }}">
+                    <!-- Product-card -->
+                    {% if variant.image %}
+                        <img src="{{ variant.image | img_url: '400x400' }}" alt="{{ product.title }}" loading="lazy" width="400" height="400" />
+                    {% elsif product.featured_image %}
+                        <img src="{{ product.featured_image | img_url: '400x400'}}" alt="{{ product.title }}" loading="lazy" width="400" height="400" />
+                    {% else %}    
+                        <img src="https://via.placeholder.com/400x400?text=No+Image" alt="No image" width="400" height="400" />
+                    {% endif  %}  
+
+                    <div class="product-title">{{  product.title }} - {{ variant.options.first }} </div>
+                    <div class="product-price">{{ variant.price | money }} </div>
+                </a>
+
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>
