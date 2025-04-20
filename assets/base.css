@@ -117,7 +117,12 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   text-transform: uppercase;
   margin-top: 0.25rem;
 }
-
+.custom-product-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  text-transform: uppercase;
+}
 
 @media screen and (min-width: 750px) {
   .page-width {

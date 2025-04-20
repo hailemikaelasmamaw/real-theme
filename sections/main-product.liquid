@@ -91,22 +91,16 @@
                 {% render block %}
               {%- when 'text' -%}
                 <p
-                  class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
-                  {{ block.shopify_attributes }}
-                >
+                  class="product__text inline-richtext {% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
+                  {{ block.shopify_attributes }}>
                   {{- block.settings.text -}}
                 </p>
               {%- when 'title' -%}
                 <div class="product__title-wrapper" {{ block.shopify_attributes }}>
-                  <h1 class="product__title-main">{{ product.title | escape }}</h1>
-                  
-                  <a href="{{ product.url }}" class="product__title-link">
-                    <h2 class="product__title-secondary h1">
-                      {{ product.title | escape }}
-                    </h2>
-                  </a>
+                  <h1 class="custom-product-title">
+                    {{ product.title | escape }}
+                  </h1>
                 </div>
-              
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
@@ -116,6 +110,7 @@
                     price_class: 'price--large'
                   -%}
                 </div>
+
                 {%- if product.quantity_price_breaks_configured? -%}
                   <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
                     <span>{{ 'products.product.volume_pricing.note' | t }}</span>
@@ -147,8 +142,7 @@
                   class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
                   {{ block.shopify_attributes }}
                   id="Inventory-{{ section.id }}"
-                  role="status"
-                >
+                  role="status">
                   {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}
                     {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
                       {%- if product.selected_or_first_available_variant.inventory_quantity
