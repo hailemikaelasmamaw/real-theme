@@ -1,22 +1,40 @@
-<div class= "product-grid">
-    {% for product in collection.products %}
-        {% for variant in product.variants %}
-            <div class = "product-card">
-                <a href="{{ product.url }}? varient={{ varient.id }}">
-                    <!-- Product-card -->
-                    {% if variant.image %}
-                        <img src="{{ variant.image | img_url: '400x400' }}" alt="{{ product.title }}" loading="lazy" width="400" height="400" />
-                    {% elsif product.featured_image %}
-                        <img src="{{ product.featured_image | img_url: '400x400'}}" alt="{{ product.title }}" loading="lazy" width="400" height="400" />
-                    {% else %}    
-                        <img src="https://via.placeholder.com/400x400?text=No+Image" alt="No image" width="400" height="400" />
-                    {% endif  %}  
+<section class="custom-collection">
+    <h1 class="collection-title">{{ collection.title }}</h1>
 
-                    <div class="product-title">{{  product.title }} - {{ variant.options.first }} </div>
-                    <div class="product-price">{{ variant.price | money }} </div>
-                </a>
-
+    <div class="collection-grid">
+        {% for product in collection.products %}
+        <div class="product-card">
+            <a href="{{ product.url }}">
+            <div class="product-image">
+                {{ product.featured_image | image_url: width: 500 | image_tag }}
             </div>
+            </a>
+
+            <div class="product-info">
+            <h2 class="product-title">
+                <a href="{{ product.url }}">{{ product.title }}</a>
+            </h2>
+            <p class="product-price">{{ product.price | money }}</p>
+
+            {% form 'product', product %}
+                {% if product.variants.size > 1 %}
+                <label for="variant-select-{{ product.id }}">Size</label>
+                <select name="id" id="variant-select-{{ product.id }}">
+                    {% for variant in product.variants %}
+                    <option value="{{ variant.id }}">{{ variant.title }}</option>
+                    {% endfor %}
+                </select>
+                {% else %}
+                <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                {% endif %}
+
+                <div class="product-buttons">
+                <button type="submit" class="btn">Add to Cart</button>
+                <button type="submit" formaction="/checkout" class="btn buy-now">Buy It Now</button>
+                </div>
+            {% endform %}
+            </div>
+        </div>
         {% endfor %}
-    {% endfor %}
-</div>
+    </div>
+</section>
