@@ -1,5 +1,9 @@
 {
   "sections": {
+    "main": {
+      "type" : "my-section"
+    },
+      
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -199,12 +203,14 @@
       }
     }
   },
+  
   "order": [
     "image_banner",
     "rich_text",
     "featured_collection",
     "collage",
     "video",
-    "multicolumn"
+    "multicolumn",
+    "main"
   ]
 }

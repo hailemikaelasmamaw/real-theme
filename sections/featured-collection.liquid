@@ -100,7 +100,7 @@
         role="list"
         aria-label="{{ 'general.slider.name' | t }}"
       >
-        {% assign skip_card_product_styles = false %}
+  
 
         {%- if section.settings.collection.products.size > 0 -%}
           {% assign lazy_load = false %}
@@ -117,20 +117,17 @@
                   style="--animation-order: {{ forloop.index }};"
                 {% endif %}
               >
-                {% render 'card-product',
-                  card_product: product,
-                  media_aspect_ratio: section.settings.image_ratio,
-                  image_shape: section.settings.image_shape,
-                  lazy_load: lazy_load,
-                  show_secondary_image: section.settings.show_secondary_image,
-                  show_vendor: section.settings.show_vendor,
-                  show_rating: section.settings.show_rating,
-                  skip_styles: skip_card_product_styles,
-                  section_id: section.id,
-                  quick_add: section.settings.quick_add
-                %}
+                <a href="{{ product.url }}" class="custom-product-card" style="text-decoration: none; color: inherit;">
+                  <div style="padding: 1rem; border: 1px solid #ddd; border-radius: 8px; text-align: center;">
+                    <h3 style="font-weight: bold; font-size: 1.1rem;">{{ product.title }}</h3>
+                    <p style="margin: 0.2rem 0; color: #666;">{{ product.vendor }}</p>
+                    <p style="font-size: 0.95rem; color: #333;">
+                      {{ product.price | money }} <small style="color: #999;">incl. tax</small>
+                    </p>
+                  </div>
+                </a>
+                
               </li>
-              {%- assign skip_card_product_styles = true -%}
             {%- endfor -%}
           {% endpaginate %}
         {%- else -%}
