@@ -1,11 +1,17 @@
 {
   "sections": {
-    "banner": {
-      "type": "main-collection-banner",
+    "main": {
+      "type": "featured-collection",
       "settings": {
-        "show_collection_description": true,
-        "show_collection_image": false,
-        "color_scheme": "scheme-1"
+        "collection": "frontpage",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "image_ratio": "square",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_view_all": true,
+        "view_all_text": "View all",
+        "heading": "Featured collection"
       }
     },
     "product-grid": {
@@ -28,5 +34,6 @@
   "order": [
     "banner",
     "product-grid"
+    "main"
   ]
 }
