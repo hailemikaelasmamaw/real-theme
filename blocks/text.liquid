@@ -18,29 +18,36 @@
 {{ block.settings.text }}
 </div>
 
+{% content_for 'blocks' %}
+
 {% schema %}
 {
 "name": "Text",
 "settings": [
-  {
+    {
     "type": "richtext",
     "id": "text",
     "label": "Text"
-  },
-  {
+    },
+    {
     "type": "text_alignment",
     "id": "alignment",
     "label": "Alignment"
-  },
+    },
+],
+"blocks": [
+    {
+        "type": "@theme"
+    }
 ],
 "presets": [
-  { "name": "Text" },
-  {
+    { "name": "Text" },
+    {
     "name": "Content",
     "settings": {
-      "text": "<p>Hello, world!</p>"
+        "text": "<p>Hello, world!</p>"
     }
-  }
+    }
 ]
 }
 {% endschema %}
