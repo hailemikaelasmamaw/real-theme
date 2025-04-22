@@ -33,7 +33,7 @@
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
     "main"
   ]
 }
