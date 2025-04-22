@@ -1,0 +1,20 @@
+{{ block.settings.image | image_url: width: 100 , height: 100| image_tag: }}
+
+{% schema %}
+
+    {
+        "name": "Image",
+        "settings": [],
+        "blocks": [
+            {
+            "type" : "_image"
+            },
+        ],
+        "presets": [
+
+            {
+                "name": "image only"
+            }
+        ]
+    }
+{% endschema %}
