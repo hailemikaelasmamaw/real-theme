@@ -1,0 +1,30 @@
+{% if section.blocks.size > 2 %}
+    {% content_for 'block', type: 'button', id: 'pagination' %}
+
+{% endif %}
+
+<div style="display: flex; justify-content: space-around; margin-top: 2rem">
+    {% content_for 'blocks' %}
+
+</div>
+
+{% schema %}
+
+    {
+        "name": "Slideshow blocks",
+        "settings": [],
+        "blocks": [
+            {
+                "type": "_image"
+            },
+            {
+                "type": "button"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Slideshow blocks"
+            }
+        ]
+    }
+{% endschema %}
