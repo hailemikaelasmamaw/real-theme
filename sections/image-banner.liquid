@@ -53,7 +53,7 @@
 
   assign bg_position = section.settings.image_position | default: 'center'
   assign bg_position_mobile = section.settings.image_position_mobile | default: 'center'
-  assign parallax_class = section.settings.enable_parallax | default: false | stringify
+  assign parallax_class = section.settings.enable_parallax | default: false 
 -%}
 
 <div
